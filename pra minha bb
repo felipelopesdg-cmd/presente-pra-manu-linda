@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Presente para Manu 💝</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      background: linear-gradient(to bottom, #ffe6f0, #fff);
+      color: #000;
+      padding: 20px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Contador pulsante */
+    #contador {
+      font-size: 3rem;
+      margin-top: 50px;
+      animation: pulse 1s infinite;
+      z-index: 2;
+      position: relative;
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+
+    /* Mensagem e presente */
+    #mensagem, #presente, #conteudoPresente, #player {
+      display: none;
+      opacity: 0;
+      transition: opacity 1.5s ease;
+      margin-top: 20px;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Presente animado */
+    #presente {
+      font-size: 3rem;
+      cursor: pointer;
+      animation: bounce 2s infinite, glow 2s infinite alternate;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+    @keyframes glow {
+      0% { text-shadow: 0 0 5px #ff69b4, 0 0 10px #ff69b4; }
+      100% { text-shadow: 0 0 20px #ff69b4, 0 0 40px #ff1493; }
+    }
+    #presente p {
+      margin: 5px 0;
+      font-size: 1.2rem;
+    }
+    #manu {
+      color: #ff69b4;
+      font-size: 1.5rem;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    /* Texto do presente com fade-in */
+    .frase {
+      font-size: 1.2rem;
+      margin: 40px 0;
+      animation: fadeIn 2s forwards;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+
+    /* Corações e partículas flutuantes */
+    .particula {
+      position: absolute;
+      font-size: 20px;
+      color: #ff69b4;
+      animation: floatUp linear infinite;
+      opacity: 0.8;
+      pointer-events: none;
+    }
+    .brilho {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      background: #ff1493;
+      border-radius: 50%;
+      opacity: 0.7;
+      animation: sparkle linear infinite;
+      pointer-events: none;
+    }
+    @keyframes floatUp {
+      0% { transform: translateY(0) scale(1); opacity: 0.8; }
+      100% { transform: translateY(-800px) scale(1.5); opacity: 0; }
+    }
+    @keyframes sparkle {
+      0% { transform: translateY(0) scale(1); opacity: 0.7; }
+      100% { transform: translateY(-500px) scale(0.5); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Contagem regressiva -->
+  <h1 id="contador">10</h1>
+  <h2 id="mensagem">para o amor da minha vida ❤️‍🩹</h2>
+  
+  <!-- Presente -->
+  <div id="presente">
+    🎁 
+    <p>abra o presente</p>
+    <div id="manu">MANU LOPES 💝</div>
+  </div>
+
+  <!-- Conteúdo do presente -->
+  <div id="conteudoPresente">
+    <p class="frase">
+      meu amor, eu te amo muito. vc e o amor da minha vida, amo estar ao seu lado e sempre ter a sua companhia🫶🏻, venho a meio desse link que me deu um trabalhinho pra fazer mais eu tentei kkk sei que não ficou muito bom mais eu fiz de ❤️, eu te amo muito e quero te fala que vc e muito importante pra mim. vc faz os meus dias ficar melhor até perfeito, as vezes posso até ser chato, grosso, iguinorante, mais me perdoa todas as vezes que fui. eu gosto muito de vc e quero vc pra sempre na minha vida ❤️‍🩹
+    </p>
+  </div>
+
+  <!-- Player do YouTube (música automática) -->
+  <div id="player">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/W7JI_SQaXpU?start=25&autoplay=1&loop=1&playlist=W7JI_SQaXpU" 
+      title="YouTube video player" frameborder="0" allow="autoplay; encrypted-media; accelerometer; clipboard-write; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
+
+  <script>
+    let tempo = 10;
+    const contador = document.getElementById("contador");
+    const mensagem = document.getElementById("mensagem");
+    const presente = document.getElementById("presente");
+    const conteudo = document.getElementById("conteudoPresente");
+    const player = document.getElementById("player");
+
+    // Função para criar partículas de coração
+    function criarCoracao() {
+      const coracao = document.createElement("div");
+      coracao.classList.add("particula");
+      coracao.textContent = "💖";
+      coracao.style.left = Math.random() * window.innerWidth + "px";
+      coracao.style.fontSize = (10 + Math.random() * 30) + "px";
+      coracao.style.animationDuration = (4 + Math.random() * 4) + "s";
+      document.body.appendChild(coracao);
+      setTimeout(() => coracao.remove(), 8000);
+    }
+
+    // Função para criar brilhos
+    function criarBrilho() {
+      const brilho = document.createElement("div");
+      brilho.classList.add("brilho");
+      brilho.style.left = Math.random() * window.innerWidth + "px";
+      brilho.style.width = (2 + Math.random() * 6) + "px";
+      brilho.style.height = brilho.style.width;
+      brilho.style.animationDuration = (3 + Math.random() * 3) + "s";
+      document.body.appendChild(brilho);
+      setTimeout(() => brilho.remove(), 6000);
+    }
+
+    // Criar partículas continuamente
+    setInterval(criarCoracao, 400);
+    setInterval(criarBrilho, 300);
+
+    // Contagem regressiva
+    const intervalo = setInterval(() => {
+      tempo--;
+      contador.textContent = tempo;
+      if (tempo === 0) {
+        clearInterval(intervalo);
+        contador.style.display = "none";
+        mensagem.style.display = "block";
+        presente.style.display = "block";
+        setTimeout(() => {
+          mensagem.style.opacity = 1;
+          presente.style.opacity = 1;
+        }, 50);
+      }
+    }, 1000);
+
+    // Ao clicar no presente
+    presente.addEventListener("click", () => {
+      conteudo.style.display = "block";
+      player.style.display = "block"; // mostra o player do YouTube
+      setTimeout(() => { 
+        conteudo.style.opacity = 1; 
+        player.style.opacity = 1;
+      }, 50);
+      presente.style.display = "none";
+      mensagem.style.display = "none";
+    });
+  </script>
+</body>
+</html>
